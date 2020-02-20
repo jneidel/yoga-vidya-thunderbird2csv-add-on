@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": {
+    "name": "Jonathan Neidel",
+    "email": "yoga@jneidel.com",
+    "url": "http://jneidel.com"
+  },
+  "main": "app.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "sudo nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-xlsx": "^0.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

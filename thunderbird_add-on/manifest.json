@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "mail2csv",
+  "description": "Wandle ausgewählte Kontaktformularmails in cobra CSV um",
+	"version": "0.0.1",
+	"author": "Yoga-Vidya-Dresden",
+	"developer": {
+		"name": "Jonathan Neidel"
+	},
+	"applications": {
+		"gecko": {
+			"id": "mail2scv@yoga-vidya",
+			"strict_min_version": "60.0"
+		}
+	},
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_title": "Ausgewählte Mails -> CSV",
+		"default_icon": "images/icon-32.png"
+	},
+	"permissions": [
+    "messagesRead"
+	],
+	"icons": {
+		"64": "images/icon-64.png",
+		"32": "images/icon-32.png",
+		"16": "images/icon-16.png"
+	}
+}
