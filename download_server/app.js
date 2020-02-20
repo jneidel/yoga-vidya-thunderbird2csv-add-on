@@ -1,11 +1,5 @@
 const express = require( "express" );
-const bodyParser = require( "body-parser" );
 const xlsx = require( "node-xlsx" ).default;
-
-const app = express();
-
-app.use( bodyParser.json() );
-app.use( bodyParser.urlencoded( { extended: true } ) );
 
 const router = express.Router();
 router.get( "/", ( req, res ) => {
@@ -23,10 +17,10 @@ router.get( "/", ( req, res ) => {
     res.sendStatus( 400 );
 } );
 
+const app = express();
 app.use( "/", router );
 
 const port = 90;
-
 app.listen( port, () => {
   console.log( `Server running on port ${port}.` );
 } );
