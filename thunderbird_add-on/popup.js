@@ -39,16 +39,16 @@ function parseEmail( mail ) {
     data.nachname = ""
   }
   delete data.name
-  maybeSet( /Stra.+?e und Hausnr\.: (.+)<\/dt>/, "adresse" )
-  maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+)<\/dt>/, "ort" )
-  maybeSet( /Telefon tags.+?ber: (.+)<\/dt>/, "telefon" )
-  maybeSet( /E-Mail:\* (.+)<\/dt>/, "email" )
-  maybeSet( /Ich bin bereits im Haus bekannt\.<\/dt>/, "bekannt" )
+  maybeSet( /Stra.+?e und Hausnr\.: (.+)<\/dt>/, "Strasse" )
+  maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+)<\/dt>/, "Ort" )
+  maybeSet( /Telefon tags.+?ber: (.+)<\/dt>/, "Telefon" )
+  maybeSet( /E-Mail:\* (.+)<\/dt>/, "Email" )
+  maybeSet( /Ich bin bereits im Haus bekannt\.<\/dt>/, "BereitsBekannt" )
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
-  maybeSet( /Kontoinhaber\/in: (.+)<\/dt>/, "inhaber" )
-  maybeSet( /IBAN: (.+)<\/dt>/, "iban" )
-  maybeSet( /SWIFT-BIC: (.+)<\/dt>/, "bic" )
-  maybeSet( /Bankname: (.+)<\/dt>/, "bank" )
+  maybeSet( /Kontoinhaber\/in: (.+)<\/dt>/, "Kontoinhaber" )
+  maybeSet( /IBAN: (.+)<\/dt>/, "IBAN" )
+  maybeSet( /SWIFT-BIC: (.+)<\/dt>/, "BIC" )
+  maybeSet( /Bankname: (.+)<\/dt>/, "Bank" )
 
   return data;
 }
