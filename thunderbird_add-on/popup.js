@@ -65,20 +65,20 @@ function setDownloadHref( data ) {
 }
 
 function formatMails( mails ) {
-  const data = mails.map( mail => {
-    const res = [ [], [] ];
+  const definitions = Object.keys( mails[0] );
 
+  const data = mails.map( mail => {
+    const res = [];
+
+    // .filter( prop => mail[prop] != "" )
     Object.keys( mail )
-      .filter( prop => mail[prop] != "" )
       .map( prop => {
-        res[0].push( prop );
-        res[1].push( mail[prop] );
+        res.push( mail[prop] );
       } );
 
     return res;
   } );
-
-  console.log( data );
+  data.unshift( definitions );
 
   return data;
 }
@@ -86,14 +86,14 @@ function formatMails( mails ) {
 async function main() {
   let mails = await getMessagesAsIds();
   mails = await Promise.all( mails.map( async id => await expandMessage( id ) ) );
-  console.log( mails )
   mails = mails.map( mail => parseEmail( mail ) );
-  console.log( mails )
   // extra validation?
 
   updateHtml( mails );
-
-  const formattedMails = formatMails( mails );
-  setDownloadHref( formattedMails );
+  if ( mails.length ) {
+    const formattedMails = formatMails( mails );
+    console.log( formattedMails )
+    setDownloadHref( formattedMails );
+  }
 }
 main();
