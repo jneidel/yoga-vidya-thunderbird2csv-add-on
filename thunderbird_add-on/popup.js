@@ -86,7 +86,9 @@ function formatMails( mails ) {
 async function main() {
   let mails = await getMessagesAsIds();
   mails = await Promise.all( mails.map( async id => await expandMessage( id ) ) );
+  console.log( mails )
   mails = mails.map( mail => parseEmail( mail ) );
+  console.log( mails )
   // extra validation?
 
   updateHtml( mails );
