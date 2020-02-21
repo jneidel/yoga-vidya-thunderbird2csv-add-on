@@ -30,6 +30,15 @@ function parseEmail( mail ) {
   maybeSet( /Kurs\/Workshop\/Seminar:\* (.+)<\/dt>/, "kurs" )
   maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+)<\/dt>/, "datum" )
   maybeSet( /Vor- und Nachname:\* (.+)<\/dt>/, "name" )
+  if ( data.name ) {
+    const nameSplit = data.name.split( " " );
+    data.nachname = nameSplit.pop();
+    data.vorname = nameSplit.join( " " );
+  } else {
+    data.vorname = ""
+    data.nachname = ""
+  }
+  delete data.name
   maybeSet( /Straße und Hausnr\.: (.+)<\/dt>/, "adresse" )
   maybeSet( /PLZ Ort \(ggf\. Länderkennung\): (.+)<\/dt>/, "ort" )
   maybeSet( /Telefon tagsüber: (.+)<\/dt>/, "telefon" )
@@ -50,7 +59,7 @@ function updateHtml( mails ) {
 
   text.push( `Es wurde${mails.length > 1 ? "n" : ""} ${mails.length} Mail${mails.length > 1 ? "s" : ""} ausgewählt.<br>` );
 
-  mails.forEach( mail => text.push( `- ${mail.name}<br>` ) );
+  mails.forEach( mail => text.push( `- ${mail.vorname + mail.nachname}<br>` ) );
 
   el.innerHTML = text.join( "\n" );
 }
