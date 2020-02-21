@@ -13,14 +13,11 @@
     "node": ">=8"
   },
   "scripts": {
-    "start": "sudo forever app.js",
-    "start-windows": "elevate forever app.js"
+    "start": "sudo node app.js",
+    "start-windows": "node app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "node-xlsx": "^0.15.0"
-  },
-  "devDependencies": {
-    "forever": "^2.0.0"
   }
 }
