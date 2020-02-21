@@ -38,7 +38,6 @@ function parseEmail( mail ) {
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
   maybeSet( /Kontoinhaber\/in: (.+)<\/dt>/, "inhaber" )
   maybeSet( /IBAN: (.+)<\/dt>/, "iban" )
-  maybeSet( /IuuBAN: (.+)<\/dt>/, "uff" )
   maybeSet( /SWIFT-BIC: (.+)<\/dt>/, "bic" )
   maybeSet( /Bankname: (.+)<\/dt>/, "bank" )
 
