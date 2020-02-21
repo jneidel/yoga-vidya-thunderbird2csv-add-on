@@ -32,11 +32,11 @@ function parseEmail( mail ) {
   maybeSet( /Vor- und Nachname:\* (.+)<\/dt>/, "name" )
   if ( data.name ) {
     const nameSplit = data.name.split( " " );
-    data.nachname = nameSplit.pop();
-    data.vorname = nameSplit.join( " " );
+    data.Nachname = nameSplit.pop();
+    data.Vorname = nameSplit.join( " " );
   } else {
-    data.vorname = ""
-    data.nachname = ""
+    data.Vorname = ""
+    data.Nachname = ""
   }
   delete data.name
   maybeSet( /Stra.+?e und Hausnr\.: (.+)<\/dt>/, "Strasse" )
@@ -47,7 +47,7 @@ function parseEmail( mail ) {
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
   maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
   maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
-  maybeSet( /SWIFT-BIC: (.+?)<\/li>/, "BIC" )
+  maybeSet( /(SWIFT-)?BIC: (.+?)<\/li>/, "BIC" )
   maybeSet( /Bankname: (.+?)<\/li>/, "Bank" )
 
   return data;
