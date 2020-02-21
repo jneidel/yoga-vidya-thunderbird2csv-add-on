@@ -39,9 +39,9 @@ function parseEmail( mail ) {
     data.nachname = ""
   }
   delete data.name
-  maybeSet( /Straße und Hausnr\.: (.+)<\/dt>/, "adresse" )
-  maybeSet( /PLZ Ort \(ggf\. Länderkennung\): (.+)<\/dt>/, "ort" )
-  maybeSet( /Telefon tagsüber: (.+)<\/dt>/, "telefon" )
+  maybeSet( /Stra.+?e und Hausnr\.: (.+)<\/dt>/, "adresse" )
+  maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+)<\/dt>/, "ort" )
+  maybeSet( /Telefon tags.+?ber: (.+)<\/dt>/, "telefon" )
   maybeSet( /E-Mail:\* (.+)<\/dt>/, "email" )
   maybeSet( /Ich bin bereits im Haus bekannt\.<\/dt>/, "bekannt" )
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
