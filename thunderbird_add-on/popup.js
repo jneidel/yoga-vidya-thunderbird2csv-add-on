@@ -27,20 +27,20 @@ function parseEmail( mail ) {
 
     data[prop] = val;
   }
-  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+)<\dt>/, "kurs" )
-  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+)<\dt>/, "datum" )
-  maybeSet( /Vor- und Nachname:\* (.+)<\dt>/, "name" )
-  maybeSet( /Straße und Hausnr\.: (.+)<\dt>/, "adresse" )
-  maybeSet( /PLZ Ort \(ggf\. Länderkennung\): (.+)<\dt>/, "ort" )
-  maybeSet( /Telefon tagsüber: (.+)<\dt>/, "telefon" )
-  maybeSet( /E-Mail:\* (.+)<\dt>/, "email" )
-  maybeSet( /Ich bin bereits im Haus bekannt\.<\dt>/, "bekannt" )
+  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+)<\/dt>/, "kurs" )
+  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+)<\/dt>/, "datum" )
+  maybeSet( /Vor- und Nachname:\* (.+)<\/dt>/, "name" )
+  maybeSet( /Straße und Hausnr\.: (.+)<\/dt>/, "adresse" )
+  maybeSet( /PLZ Ort \(ggf\. Länderkennung\): (.+)<\/dt>/, "ort" )
+  maybeSet( /Telefon tagsüber: (.+)<\/dt>/, "telefon" )
+  maybeSet( /E-Mail:\* (.+)<\/dt>/, "email" )
+  maybeSet( /Ich bin bereits im Haus bekannt\.<\/dt>/, "bekannt" )
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
-  maybeSet( /Kontoinhaber\/in: (.+)<\dt>/, "inhaber" )
-  maybeSet( /IBAN: (.+)<\dt>/, "iban" )
-  maybeSet( /IuuBAN: (.+)<\dt>/, "uff" )
-  maybeSet( /SWIFT-BIC: (.+)<\dt>/, "bic" )
-  maybeSet( /Bankname: (.+)<\dt>/, "bank" )
+  maybeSet( /Kontoinhaber\/in: (.+)<\/dt>/, "inhaber" )
+  maybeSet( /IBAN: (.+)<\/dt>/, "iban" )
+  maybeSet( /IuuBAN: (.+)<\/dt>/, "uff" )
+  maybeSet( /SWIFT-BIC: (.+)<\/dt>/, "bic" )
+  maybeSet( /Bankname: (.+)<\/dt>/, "bank" )
 
   return data;
 }
