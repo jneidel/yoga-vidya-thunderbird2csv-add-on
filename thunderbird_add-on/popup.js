@@ -30,7 +30,7 @@ function parseEmail( mail ) {
   maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\r\n|\n)Datum/, "Kurs_Status" )
   data.Kurs_Status.replace( /(\r\n|\n)/, "" );
   maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\r\n|\n)/, "Datum_Kundenart" )
-  maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "Name" )
+  maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "name" )
   if ( data.name ) {
     const nameSplit = data.name.split( " " );
     data.Nachname = nameSplit.pop();
