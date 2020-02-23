@@ -10,7 +10,7 @@ router.get( "/", ( req, res ) => {
     const xlsBuffer = xlsx.build( [ { name: "cobra import", data: data } ] );
 
     const today = new Date();
-    res.setHeader( "Content-disposition", `attachment; filename=cobra-${today.getDate()}-${today.getMonth()+1}.xlsx` );
+    res.setHeader( "Content-disposition", `attachment; filename=cobra.xlsx` );
     res.contentType( "application/xlsx" );
     res.send( xlsBuffer );
   } else
