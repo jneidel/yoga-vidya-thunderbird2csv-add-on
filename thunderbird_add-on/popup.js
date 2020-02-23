@@ -27,9 +27,9 @@ function parseEmail( mail ) {
 
     data[prop] = val;
   }
-  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\r\n|\n)/, "kurs" )
-  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\r\n|\n)/, "datum" )
-  maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "name" )
+  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\r\n|\n)/, "Kurs_Status" )
+  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\r\n|\n)/, "Datum_Kundenart" )
+  maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "Name" )
   if ( data.name ) {
     const nameSplit = data.name.split( " " );
     data.Nachname = nameSplit.pop();
@@ -41,8 +41,15 @@ function parseEmail( mail ) {
   delete data.name
   maybeSet( /Stra.+?e und Hausnr\.: (.+?)(<\/dt>|\r\n|\n)/, "Strasse" )
   maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+?)(<\/dt>|\r\n|\n)/, "Ort" )
+  if ( data.Ort.match( /\d{5}/ ) {
+    data.PLZ = data.Ort.match( /\d{5}/ )[0]
+    const matches = data.Ort.match( /(.*)(?:\d{5})(.*)/ );
+    const ortArr = [ matches[1], matches[2] ];
+    data.Ort = ortArr.join( "" );
+  }
+  data.Land = "D"
   maybeSet( /Telefon tags.+?ber: (.+?)(<\/dt>|\r\n|\n)/, "Telefon" )
-  maybeSet( /Telefon abends: (.+?)(<\/dt>|\r\n|\n)/, "Telefon_Abends" )
+  maybeSet( /Telefon abends: (.+?)(<\/dt>|\r\n|\n)/, "Telefon_Abends_Mobil" )
   if ( data.Telefon == data.Telefon_Abends )
     data.Telefon_Abends = "";
   maybeSet( /E-Mail:\* (.+?)(<\/dt>|\r\n|\n)/, "Email" )
