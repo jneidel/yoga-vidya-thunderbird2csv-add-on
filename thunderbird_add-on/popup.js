@@ -27,7 +27,8 @@ function parseEmail( mail ) {
 
     data[prop] = val;
   }
-  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\r\n|\n)/, "Kurs_Status" )
+  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\r\n|\n)Datum/, "Kurs_Status" )
+  data.Kurs_Status.replace( /(\r\n|\n)/, "" );
   maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\r\n|\n)/, "Datum_Kundenart" )
   maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "Name" )
   if ( data.name ) {
