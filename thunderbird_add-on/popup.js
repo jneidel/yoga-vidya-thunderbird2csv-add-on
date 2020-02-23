@@ -62,7 +62,7 @@ function updateHtml( mails ) {
 
   text.push( `Es wurde${mails.length > 1 ? "n" : ""} ${mails.length} Mail${mails.length > 1 ? "s" : ""} ausgewählt.<br>` );
 
-  mails.forEach( mail => text.push( `- ${mail.Vorname + mail.Nachname}<br>` ) );
+  mails.forEach( mail => text.push( `- ${mail.Vorname} ${mail.Nachname}<br>` ) );
 
   el.innerHTML = text.join( "\n" );
 }
