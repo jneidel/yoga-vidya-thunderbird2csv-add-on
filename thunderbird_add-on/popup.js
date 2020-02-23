@@ -27,9 +27,9 @@ function parseEmail( mail ) {
 
     data[prop] = val;
   }
-  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+)<\/dt>/, "kurs" )
-  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+)<\/dt>/, "datum" )
-  maybeSet( /Vor- und Nachname:\* (.+)<\/dt>/, "name" )
+  maybeSet( /Kurs\/Workshop\/Seminar:\* (.+?)(<\/dt>|\\r|\\n)/, "kurs" )
+  maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\\r|\\n)/, "datum" )
+  maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\\r|\\n)/, "name" )
   if ( data.name ) {
     const nameSplit = data.name.split( " " );
     data.Nachname = nameSplit.pop();
@@ -39,11 +39,11 @@ function parseEmail( mail ) {
     data.Nachname = ""
   }
   delete data.name
-  maybeSet( /Stra.+?e und Hausnr\.: (.+)<\/dt>/, "Strasse" )
-  maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+)<\/dt>/, "Ort" )
-  maybeSet( /Telefon tags.+?ber: (.+)<\/dt>/, "Telefon" )
-  maybeSet( /E-Mail:\* (.+)<\/dt>/, "Email" )
-  maybeSet( /Ich bin bereits im Haus bekannt\.<\/dt>/, "BereitsBekannt" )
+  maybeSet( /Stra.+?e und Hausnr\.: (.+?)(<\/dt>|\\r|\\n)/, "Strasse" )
+  maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+?)(<\/dt>|\\r|\\n)/, "Ort" )
+  maybeSet( /Telefon tags.+?ber: (.+?)(<\/dt>|\\r|\\n)/, "Telefon" )
+  maybeSet( /E-Mail:\* (.+?)(<\/dt>|\\r|\\n)/, "Email" )
+  maybeSet( /Ich bin bereits im Haus bekannt\.(<\/dt>|\\r|\\n)/, "BereitsBekannt" )
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
   maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
   maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
