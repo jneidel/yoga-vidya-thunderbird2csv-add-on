@@ -43,6 +43,8 @@ function parseEmail( mail ) {
   maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+?)(<\/dt>|\r\n|\n)/, "Ort" )
   maybeSet( /Telefon tags.+?ber: (.+?)(<\/dt>|\r\n|\n)/, "Telefon" )
   maybeSet( /Telefon abends: (.+?)(<\/dt>|\r\n|\n)/, "Telefon_Abends" )
+  if ( data.Telefon == data.Telefon_Abends )
+    data.Telefon_Abends = "";
   maybeSet( /E-Mail:\* (.+?)(<\/dt>|\r\n|\n)/, "Email" )
   maybeSet( /Ich bin bereits im Haus bekannt\.(<\/dt>|\r\n|\n)/, "BereitsBekannt" )
   data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
@@ -60,7 +62,7 @@ function updateHtml( mails ) {
 
   text.push( `Es wurde${mails.length > 1 ? "n" : ""} ${mails.length} Mail${mails.length > 1 ? "s" : ""} ausgewählt.<br>` );
 
-  mails.forEach( mail => text.push( `- ${mail.vorname + mail.nachname}<br>` ) );
+  mails.forEach( mail => text.push( `- ${mail.Vorname + mail.Nachname}<br>` ) );
 
   el.innerHTML = text.join( "\n" );
 }
