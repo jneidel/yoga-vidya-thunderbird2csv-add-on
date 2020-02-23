@@ -55,10 +55,10 @@ function parseEmail( mail ) {
   maybeSet( /E-Mail:\* (.+?)(<\/dt>|\r\n|\n)/, "Email" )
   maybeSet( /Ich bin bereits im Haus bekannt\./, "BereitsBekannt" )
   data.BereitsBekannt = data.BereitsBekannt == undefined ? "Ja" : "Nein";
-  maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
-  maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
-  maybeSet( /(SWIFT-)?BIC: (.+?)<\/li>/, "BIC" )
-  maybeSet( /Bankname: (.+?)<\/li>/, "Bank" )
+  // maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
+  // maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
+  // maybeSet( /(SWIFT-)?BIC: (.+?)<\/li>/, "BIC" )
+  // maybeSet( /Bankname: (.+?)<\/li>/, "Bank" )
 
   return data;
 }
