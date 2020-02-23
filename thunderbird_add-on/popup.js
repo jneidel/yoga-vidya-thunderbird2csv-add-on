@@ -41,7 +41,7 @@ function parseEmail( mail ) {
   delete data.name
   maybeSet( /Stra.+?e und Hausnr\.: (.+?)(<\/dt>|\r\n|\n)/, "Strasse" )
   maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+?)(<\/dt>|\r\n|\n)/, "Ort" )
-  if ( data.Ort.match( /\d{5}/ ) {
+  if ( data.Ort.match( /\d{5}/ ) ) {
     data.PLZ = data.Ort.match( /\d{5}/ )[0]
     const matches = data.Ort.match( /(.*)(?:\d{5})(.*)/ );
     const ortArr = [ matches[1], matches[2] ];
