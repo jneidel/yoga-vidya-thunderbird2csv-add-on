@@ -45,7 +45,7 @@ function parseEmail( mail ) {
     data.PLZ = data.Ort.match( /\d{5}/ )[0]
     const matches = data.Ort.match( /(.*)(?:\d{5})(.*)/ );
     const ortArr = [ matches[1], matches[2] ];
-    data.Ort = ortArr.join( "" );
+    data.Ort = ortArr.join( "" ).trim();
   }
   data.Land = "D"
   maybeSet( /Telefon tags.+?ber: (.+?)(<\/dt>|\r\n|\n)/, "Telefon" )
