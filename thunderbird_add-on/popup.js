@@ -46,8 +46,8 @@ function parseEmail( mail ) {
   if ( data.Telefon == data.Telefon_Abends )
     data.Telefon_Abends = "";
   maybeSet( /E-Mail:\* (.+?)(<\/dt>|\r\n|\n)/, "Email" )
-  maybeSet( /Ich bin bereits im Haus bekannt\.(<\/dt>|\r\n|\n)/, "BereitsBekannt" )
-  data.bekannt = data.bekannt == undefined ? "Ja" : "Nein";
+  maybeSet( /Ich bin bereits im Haus bekannt\./, "BereitsBekannt" )
+  data.BereitsBekannt = data.BereitsBekannt == undefined ? "Ja" : "Nein";
   maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
   maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
   maybeSet( /(SWIFT-)?BIC: (.+?)<\/li>/, "BIC" )
