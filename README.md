@@ -25,6 +25,27 @@ gleich bleibt)**
 
 ![](images/import_format.png)
 
+## Update Thunderbird Add-on
+
+Zuerst über Klicken der `setup.bat` Datei Updates installieren.
+
+**Im Einstellungsmenu auf `Add-ons` -> `Add-ons`**
+
+![](images/update-1.png)
+
+**Im Add-on Manager auf den Einstellungsbutton -> `Install Add-on from file`**
+
+![](images/update-2.png)
+
+**Zum Ordner des Add-ons navigieren (sollte schon vorbereitet sein) und die
+`add_on.zip` auswählen**
+
+![](images/update-3.png)
+
+**Und nun bestätigen**
+
+![](images/update-4.png)
+
 ## Initiales Setup
 
 **Dependencies installieren**
