@@ -31,35 +31,31 @@ function parseEmail( mail ) {
   data.Kurs_Status.replace( /(\r\n|\n)/, "" );
   maybeSet( /Datum \(von-bis\), Uhrzeit:\* (.+?)(<\/dt>|\r\n|\n)/, "Datum_Kundenart" )
   maybeSet( /Vor- und Nachname:\* (.+?)(<\/dt>|\r\n|\n)/, "name" )
+  data.Vorname = ""
+  data.Nachname = ""
   if ( data.name ) {
     const nameSplit = data.name.split( " " );
     data.Nachname = nameSplit.pop();
     data.Vorname = nameSplit.join( " " );
-  } else {
-    data.Vorname = ""
-    data.Nachname = ""
   }
   delete data.name
   maybeSet( /Stra.+?e und Hausnr\.: (.+?)(<\/dt>|\r\n|\n)/, "Strasse" )
   maybeSet( /PLZ Ort \(ggf\. L.+?nderkennung\): (.+?)(<\/dt>|\r\n|\n)/, "Ort" )
+  data.PLZ = ""
+  data.Land = "D"
   if ( data.Ort.match( /\d{5}/ ) ) {
     data.PLZ = data.Ort.match( /\d{5}/ )[0]
     const matches = data.Ort.match( /(.*)(?:\d{5})(.*)/ );
     const ortArr = [ matches[1], matches[2] ];
     data.Ort = ortArr.join( "" ).trim();
   }
-  data.Land = "D"
   maybeSet( /Telefon tags.+?ber: (.+?)(<\/dt>|\r\n|\n)/, "Telefon" )
   maybeSet( /Telefon abends: (.+?)(<\/dt>|\r\n|\n)/, "Telefon_Abends_Mobil" )
-  if ( data.Telefon == data.Telefon_Abends )
-    data.Telefon_Abends = "";
+  if ( data.Telefon == data.Telefon_Abends_Mobil )
+    data.Telefon_Abends_Mobil = "";
   maybeSet( /E-Mail:\* (.+?)(<\/dt>|\r\n|\n)/, "Email" )
   maybeSet( /Ich bin bereits im Haus bekannt\./, "BereitsBekannt" )
   data.BereitsBekannt = data.BereitsBekannt == undefined ? "Ja" : "Nein";
-  // maybeSet( /Kontoinhaber(\/in)?: (.+?)<\/li>/, "Kontoinhaber" )
-  // maybeSet( /IBAN: (.+?)<\/li>/, "IBAN" )
-  // maybeSet( /(SWIFT-)?BIC: (.+?)<\/li>/, "BIC" )
-  // maybeSet( /Bankname: (.+?)<\/li>/, "Bank" )
 
   return data;
 }
@@ -89,7 +85,6 @@ function formatMails( mails ) {
   const data = mails.map( mail => {
     const res = [];
 
-    // .filter( prop => mail[prop] != "" )
     Object.keys( mail )
       .map( prop => {
         res.push( mail[prop] );
