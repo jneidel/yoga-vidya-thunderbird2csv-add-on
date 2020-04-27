@@ -4,7 +4,7 @@
 
 Thunderbird add-on + local Node server for extracting mails from Thunderbird and converting them to a cobra suitable xlsx (csv) format.
 
-Created for [Yoga Zentrum Dresden](https://yoga-dresden.com).
+Created for [Yoga Zentrum Dresden](http://yoga-dresden.com).
 
 ## Benutzung
 
