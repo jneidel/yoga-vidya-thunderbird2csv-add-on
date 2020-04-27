@@ -1,3 +1,11 @@
+# yoga-vidya-thunderbird2csv-add-on
+
+> Thunderbird add-on for exporting emails to cobra Adress PLUS
+
+Thunderbird add-on + local Node server for extracting mails from Thunderbird and converting them to a cobra suitable xlsx (csv) format.
+
+Created for [Yoga Zentrum Dresden](https://yoga-dresden.com).
+
 ## Benutzung
 
 **Gewünschte Mails mit Strg Klick markieren**
