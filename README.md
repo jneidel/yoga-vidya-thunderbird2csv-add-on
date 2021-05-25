@@ -62,7 +62,7 @@ Zuerst über Klicken der `setup.bat` Datei Updates installieren.
 
 ### Setup
 
-- Clone repo
+- Clone repo bzw. als [zip] downloaden
 - `setup.bat` ausführen
 
 **Thunderbird**
