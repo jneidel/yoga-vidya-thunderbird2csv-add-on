@@ -62,7 +62,7 @@ Zuerst über Klicken der `setup.bat` Datei Updates installieren.
 
 ### Setup
 
-- Clone repo bzw. als [zip] downloaden
+- Clone repo bzw. als [zip](https://github.com/jneidel/yoga-vidya-thunderbird2csv-add-on/archive/refs/heads/master.zip) downloaden
 - `setup.bat` ausführen
 
 **Thunderbird**
